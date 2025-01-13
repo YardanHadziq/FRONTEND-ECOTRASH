@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Image, StyleSheet, Alert } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Alert, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import axios from "axios";
 import API_URL from "../../config/config";
@@ -25,24 +25,21 @@ export default function RegisterScreen() {
 	};
 
 	return (
+	<ImageBackground source={require("../../assets/images/bg.jpg")} style={styles.backgroundImage}>
 		<View style={styles.container}>
-			<Image
-				source={require("../../assets/images/favicon.png")}
-				style={styles.image}
-			/>
-			<Text style={styles.title}>Create an Account</Text>
-			<Text style={styles.subtitle}>Join us and get started</Text>
+			<Text style={styles.title}>Sign Up to EcoTrash</Text>
+			<Text style={styles.subtitle}>Masuk dan jadilah bagian dari perubahan</Text>
 
 			<TextInput
 				style={styles.input}
-				placeholder="Username"
+				placeholder="Masukkan Username"
 				value={username}
 				onChangeText={setUsername}
 				autoCapitalize="none"
 			/>
 			<TextInput
 				style={styles.input}
-				placeholder="Email"
+				placeholder="Masukkan Email"
 				value={email}
 				onChangeText={setEmail}
 				keyboardType="email-address"
@@ -50,7 +47,7 @@ export default function RegisterScreen() {
 			/>
 			<TextInput
 				style={styles.input}
-				placeholder="Password"
+				placeholder="Masukkan Password"
 				value={password}
 				onChangeText={setPassword}
 				secureTextEntry
@@ -60,49 +57,53 @@ export default function RegisterScreen() {
 				style={styles.registerButton}
 				onPress={handleRegister}
 			>
-				<Text style={styles.registerButtonText}>Register</Text>
+				<Text style={styles.registerButtonText}>Create Account</Text>
 			</TouchableOpacity>
-			<TouchableOpacity
-				style={styles.backButton}
-				onPress={() => router.replace("/auth/LoginScreen")}
-			>
-				<Text style={styles.backButtonText}>Back to Login</Text>
-			</TouchableOpacity>
+			<View style={styles.backContainer}>
+				<Text style={styles.backText}>Sudah Punya Akun? </Text>
+				<TouchableOpacity onPress={() => router.replace("/auth/LoginScreen")}>
+					<Text style={styles.backLink}>Login</Text>
+				</TouchableOpacity>
+			</View>
 		</View>
+	</ImageBackground>
 	);
 }
 
 const styles = StyleSheet.create({
+	backgroundImage: {
+		flex: 1,
+		width: "100%",
+		height: 275,
+		marginTop: 32,
+		resizeMode: "cover",
+	},
 	container: {
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
+		marginTop: 250,
 		padding: 16,
-		backgroundColor: "#f9f9f9",
-	},
-	image: {
-		width: 150,
-		height: 150,
-		marginBottom: 24,
-		resizeMode: "contain",
+		backgroundColor: "#3B603F",
+		borderRadius: 27,
 	},
 	title: {
-		fontSize: 24,
+		fontSize: 28,
 		fontWeight: "bold",
-		color: "#333",
 		marginBottom: 8,
+		color: "#FFF",
 	},
 	subtitle: {
 		fontSize: 16,
-		color: "#666",
 		marginBottom: 24,
+		color: "#FFF",
 	},
 	input: {
 		width: "100%",
 		height: 48,
-		borderColor: "#ccc",
+		borderColor: "#B7C9A8",
 		borderWidth: 1,
-		borderRadius: 8,
+		borderRadius: 24,
 		paddingHorizontal: 12,
 		marginBottom: 16,
 		backgroundColor: "#fff",
@@ -110,8 +111,8 @@ const styles = StyleSheet.create({
 	registerButton: {
 		width: "100%",
 		height: 48,
-		backgroundColor: "#007BFF",
-		borderRadius: 8,
+		backgroundColor: "#00BD35",
+		borderRadius: 24,
 		justifyContent: "center",
 		alignItems: "center",
 		marginBottom: 16,
@@ -121,18 +122,18 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		fontWeight: "600",
 	},
-	backButton: {
-		width: "100%",
-		height: 48,
-		borderColor: "#007BFF",
-		borderWidth: 1,
-		borderRadius: 8,
-		justifyContent: "center",
+	backContainer: {
+		flexDirection: "row",
 		alignItems: "center",
+		justifyContent: "center",
 	},
-	backButtonText: {
-		color: "#007BFF",
-		fontSize: 16,
-		fontWeight: "600",
+	backText: {
+		fontSize: 14,
+		color: "#FFF",
+	},
+	backLink: {
+		fontSize: 14,
+		fontWeight: "bold",
+		color: "#000",
 	},
 });

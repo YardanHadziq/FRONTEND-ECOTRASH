@@ -42,7 +42,7 @@ export default function RootLayout() {
       if (isAuthenticated) {
         router.replace('/(tabs)'); // Navigate to the authenticated flow
       } else {
-        router.replace('/auth/LoginScreen'); // Navigate to the authentication flow
+        router.replace('/auth/WelcomeScreen'); // Navigate to the welcome screen
       }
     }
   }, [isAuthenticated, isLoading]);
@@ -54,6 +54,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
+        <Stack.Screen name="auth/WelcomeScreen" options={{ headerShown: false }} />
         <Stack.Screen name="auth/LoginScreen" options={{ headerShown: false }} />
         <Stack.Screen name="auth/RegisterScreen" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

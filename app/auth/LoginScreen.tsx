@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Image, StyleSheet, Alert } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Image, StyleSheet, Alert, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -27,83 +27,121 @@ export default function LoginScreen() {
 	};
 
 	return (
-		<ThemedView style={styles.container}>
-			<Image
-				source={require("../../assets/images/icon.png")}
-				style={styles.logo}
-			/>
-			<Text style={styles.title}>Welcome Back!</Text>
-			<Text style={styles.subtitle}>Log in to continue</Text>
-			<TextInput
-				style={styles.input}
-				placeholder="Username"
-				value={username}
-				onChangeText={setUsername}
-				autoCapitalize="none"
-			/>
-			<TextInput
-				style={styles.input}
-				placeholder="Password"
-				value={password}
-				onChangeText={setPassword}
-				secureTextEntry
-			/>
-			<TouchableOpacity
-				style={styles.loginButton}
-				onPress={handleLogin}
-			>
-				<Text style={styles.loginButtonText}>Login</Text>
-			</TouchableOpacity>
-			<TouchableOpacity
-				style={styles.registerButton}
-				onPress={() => router.push("/auth/RegisterScreen")}
-			>
-				<Text style={styles.registerButtonText}>Register</Text>
-			</TouchableOpacity>
-		</ThemedView>
+		<ImageBackground source={require("../../assets/images/bg.jpg")} style={styles.backgroundImage}>
+			<ThemedView style={styles.container}>
+				{/* <Image
+					source={require("../../assets/images/icon.png")}
+					style={styles.logo}
+				/> */}
+				<Text style={styles.title}>Log In to EcoTrash</Text>
+				<Text style={styles.subtitle}>Login untuk menjadikan limbah lebih bermanfaat</Text>
+				<Text style={styles.user}>Username or Email</Text>
+				<TextInput
+					style={styles.input}
+					// placeholder="Username or Email"
+					value={username}
+					onChangeText={setUsername}
+					autoCapitalize="none"
+				/>
+				<Text style={styles.pass}>Password</Text>
+				<TextInput
+					style={styles.input}
+					// placeholder="Password"
+					value={password}
+					onChangeText={setPassword}
+					secureTextEntry
+				/>
+				<View style={styles.forgotPasswordContainer}>
+					<TouchableOpacity onPress={() => Alert.alert("Forgot Password", "Forgot password functionality not implemented yet.")}> 
+						<Text style={styles.forgotPasswordText}>Forgot?</Text>
+					</TouchableOpacity>
+				</View>
+				<TouchableOpacity
+					style={styles.loginButton}
+					onPress={handleLogin}
+				>
+					<Text style={styles.loginButtonText}>Login Account</Text>
+				</TouchableOpacity>
+				<View style={styles.registerContainer}>
+					<Text style={styles.registerText}>Belum Punya Akun? Silahkan </Text>
+					<TouchableOpacity onPress={() => router.push("/auth/RegisterScreen")}>
+						<Text style={styles.registerLink}>Sign up</Text>
+					</TouchableOpacity>
+				</View>
+			</ThemedView>
+		</ImageBackground>
 	);
 }
 
 const styles = StyleSheet.create({
+	backgroundImage: {
+		flex: 1,
+		width: "100%",
+		height: 275,
+		marginTop: 32,
+		resizeMode: "cover",
+	},
 	container: {
 		flex: 1,
 		justifyContent: "center",
+		marginTop: 250,
 		alignItems: "center",
 		padding: 16,
-		backgroundColor: "#f9f9f9",
+		backgroundColor: "#3B603F",
+		borderRadius: 27,
 	},
 	logo: {
-		width: 150,
+		width: 200,
 		height: 150,
 		marginBottom: 24,
 		resizeMode: "contain",
 	},
 	title: {
-		fontSize: 24,
+		fontSize: 28,
 		fontWeight: "bold",
 		marginBottom: 8,
-		color: "#333",
+		color: "#FFF",
 	},
 	subtitle: {
 		fontSize: 16,
 		marginBottom: 24,
-		color: "#666",
+		color: "#FFF",
+	},
+	user: {
+		marginRight: 200,
+		fontSize: 14,
+		color: "#FFF",
+	},
+	pass: {
+		marginRight: 260,
+		fontSize: 14,
+		color: "#FFF",
 	},
 	input: {
 		width: "100%",
 		height: 48,
-		borderColor: "#ccc",
+		borderColor: "#B7C9A8",
 		borderWidth: 1,
-		borderRadius: 8,
+		borderRadius: 24,
 		paddingHorizontal: 12,
 		marginBottom: 16,
 		backgroundColor: "#fff",
 	},
+	forgotPasswordContainer: {
+		width: "100%",
+		alignItems: "flex-end",
+		marginBottom: 16,
+	},
+	forgotPasswordText: {
+		color: "#000",
+		fontSize: 14,
+		fontWeight: "600",
+	},
 	loginButton: {
 		width: "100%",
 		height: 48,
-		backgroundColor: "#007BFF",
-		borderRadius: 8,
+		backgroundColor: "#00BD35",
+		borderRadius: 24,
 		justifyContent: "center",
 		alignItems: "center",
 		marginBottom: 16,
@@ -113,18 +151,18 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		fontWeight: "600",
 	},
-	registerButton: {
-		width: "100%",
-		height: 48,
-		borderWidth: 1,
-		borderColor: "#007BFF",
-		borderRadius: 8,
-		justifyContent: "center",
+	registerContainer: {
+		flexDirection: "row",
 		alignItems: "center",
+		justifyContent: "center",
 	},
-	registerButtonText: {
-		color: "#007BFF",
-		fontSize: 16,
-		fontWeight: "600",
+	registerText: {
+		fontSize: 14,
+		color: "#FFF",
+	},
+	registerLink: {
+		fontSize: 14,
+		fontWeight: "bold",
+		color: "#000",
 	},
 });
