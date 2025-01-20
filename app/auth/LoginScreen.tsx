@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Image, StyleSheet, Alert, ImageBackground } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Alert, ImageBackground, ScrollView, KeyboardAvoidingView, Platform, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -28,47 +28,48 @@ export default function LoginScreen() {
 
 	return (
 		<ImageBackground source={require("../../assets/images/bg.jpg")} style={styles.backgroundImage}>
-			<ThemedView style={styles.container}>
-				{/* <Image
-					source={require("../../assets/images/icon.png")}
-					style={styles.logo}
-				/> */}
-				<Text style={styles.title}>Log In to EcoTrash</Text>
-				<Text style={styles.subtitle}>Login untuk menjadikan limbah lebih bermanfaat</Text>
-				<Text style={styles.user}>Username or Email</Text>
-				<TextInput
-					style={styles.input}
-					// placeholder="Username or Email"
-					value={username}
-					onChangeText={setUsername}
-					autoCapitalize="none"
-				/>
-				<Text style={styles.pass}>Password</Text>
-				<TextInput
-					style={styles.input}
-					// placeholder="Password"
-					value={password}
-					onChangeText={setPassword}
-					secureTextEntry
-				/>
-				<View style={styles.forgotPasswordContainer}>
-					<TouchableOpacity onPress={() => Alert.alert("Forgot Password", "Forgot password functionality not implemented yet.")}> 
-						<Text style={styles.forgotPasswordText}>Forgot?</Text>
-					</TouchableOpacity>
-				</View>
-				<TouchableOpacity
-					style={styles.loginButton}
-					onPress={handleLogin}
-				>
-					<Text style={styles.loginButtonText}>Login Account</Text>
-				</TouchableOpacity>
-				<View style={styles.registerContainer}>
-					<Text style={styles.registerText}>Belum Punya Akun? Silahkan </Text>
-					<TouchableOpacity onPress={() => router.push("/auth/RegisterScreen")}>
-						<Text style={styles.registerLink}>Sign up</Text>
-					</TouchableOpacity>
-				</View>
-			</ThemedView>
+			<KeyboardAvoidingView
+				style={{ flex: 1 }}
+				behavior={Platform.OS === "ios" ? "padding" : "height"} // Adjust behavior based on platform
+			>
+				<ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+					<ThemedView style={styles.container}>
+						<Text style={styles.title}>Log In to EcoTrash</Text>
+						<Text style={styles.subtitle}>Login untuk menjadikan limbah lebih bermanfaat</Text>
+						<Text style={styles.user}>Username or Email</Text>
+						<TextInput
+							style={styles.input}
+							value={username}
+							onChangeText={setUsername}
+							autoCapitalize="none"
+						/>
+						<Text style={styles.pass}>Password</Text>
+						<TextInput
+							style={styles.input}
+							value={password}
+							onChangeText={setPassword}
+							secureTextEntry
+						/>
+						<View style={styles.forgotPasswordContainer}>
+							<TouchableOpacity onPress={() => Alert.alert("Forgot Password", "Forgot password functionality not implemented yet.")}> 
+								<Text style={styles.forgotPasswordText}>Forgot?</Text>
+							</TouchableOpacity>
+						</View>
+						<TouchableOpacity
+							style={styles.loginButton}
+							onPress={handleLogin}
+						>
+							<Text style={styles.loginButtonText}>Login Account</Text>
+						</TouchableOpacity>
+						<View style={styles.registerContainer}>
+							<Text style={styles.registerText}>Belum Punya Akun? Silahkan </Text>
+							<TouchableOpacity onPress={() => router.push("/auth/RegisterScreen")}>
+								<Text style={styles.registerLink}>Sign up</Text>
+							</TouchableOpacity>
+						</View>
+					</ThemedView>
+				</ScrollView>
+			</KeyboardAvoidingView>
 		</ImageBackground>
 	);
 }
@@ -88,13 +89,10 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		padding: 16,
 		backgroundColor: "#3B603F",
-		borderRadius: 27,
-	},
-	logo: {
-		width: 200,
-		height: 150,
-		marginBottom: 24,
-		resizeMode: "contain",
+		borderTopLeftRadius: 27,
+		borderTopRightRadius: 27,
+		borderBottomLeftRadius: 0,
+		borderBottomRightRadius: 0,
 	},
 	title: {
 		fontSize: 28,

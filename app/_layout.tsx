@@ -58,6 +58,15 @@ export default function RootLayout() {
         <Stack.Screen name="auth/LoginScreen" options={{ headerShown: false }} />
         <Stack.Screen name="auth/RegisterScreen" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/Notifikasi" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/PaketSampah" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/RiwayatTransaksi" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/PanduanAplikasi" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/Profile" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/JadwalPenjemputan" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/TransaksiSukses" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/PembayaranSukses" options={{ headerShown: false }} />
+        <Stack.Screen name="sections/KonfirmasiJemput" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

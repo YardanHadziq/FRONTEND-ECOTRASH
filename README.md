@@ -1,6 +1,17 @@
-# Welcome to your Expo app 👋
+# EcoTrash - Aplikasi Pengelolaan Sampah Pintar
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+EcoTrash adalah aplikasi mobile yang bertujuan untuk mengurangi sampah dan meningkatkan kesadaran lingkungan. Aplikasi ini memudahkan pengguna dalam mengelola sampah rumah tangga, mendaur ulang, serta mencari tempat sampah terdekat. Dengan EcoTrash, setiap individu dapat berkontribusi dalam menciptakan lingkungan yang lebih bersih dan hijau.
+
+## Fitur Utama
+
+- **Paket Pengelolaan Sampah**: Pengguna dapat memilih berbagai paket pengelolaan sampah sesuai kebutuhan:
+  - **Paket Rumah**: Pengelolaan sampah rumah tangga dengan harga yang terjangkau.
+  - **Paket Komersial**: Didesain untuk usaha kecil dan menengah yang memerlukan layanan pengelolaan sampah lebih sering.
+  - **Paket Industri**: Layanan untuk perusahaan besar yang membutuhkan solusi pengelolaan sampah dalam volume tinggi.
+  
+- **Pembayaran Mudah dengan QRIS**: Lakukan pembayaran untuk paket yang dipilih menggunakan QRIS secara cepat dan aman.
+
+- **Kontak dengan Tukang Sampah**: Hubungi tukang sampah terdekat untuk pengambilan sampah langsung dari rumah, usaha, atau fasilitas industri Anda melalui fitur chat di aplikasi.
 
 ## Get started
 
@@ -8,6 +19,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```bash
    npm install
+   npx expo install expo-barcode-scanner
+   npx expo install expo-camera
+   npx expo install @react-native-picker/picker
+   npm install react-native-date-picker
+   npm install @react-native-community/datetimepicker
    ```
 
 2. Start the app
@@ -16,35 +32,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Keuntungan Menggunakan EcoTrash
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **Meningkatkan Kesadaran Lingkungan**: Menyadarkan pengguna tentang pentingnya pengelolaan sampah yang tepat.
+- **Mudah Digunakan**: Antarmuka yang sederhana dan intuitif untuk semua usia.
+- **Berpartisipasi dalam Gerakan Hijau**: Setiap langkah kecil yang Anda ambil membantu bumi kita.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Bergabung dalam Perubahan
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Setiap tindakan kecil dapat membuat perbedaan besar. Dengan EcoTrash, Anda membantu mewujudkan dunia yang lebih bersih dan lebih hijau. Unduh sekarang dan mulai perjalanan Anda menuju pengelolaan sampah yang lebih baik!
