@@ -22,7 +22,6 @@ EcoTrash adalah aplikasi mobile yang bertujuan untuk mengurangi sampah dan menin
    npx expo install expo-barcode-scanner
    npx expo install expo-camera
    npx expo install @react-native-picker/picker
-   npm install react-native-date-picker
    npm install @react-native-community/datetimepicker
    ```
 
